@@ -17,6 +17,9 @@
         margin: 10px;
         padding: 10px;
       }
+      .active {
+        font-size: large;
+    }
     </style>
   </head>
   <body>
@@ -26,7 +29,7 @@
       <div>
         <ul class="nav nav-tabs">
           <!-- 선택된탭:선택된 탭에 .active    -->
-          <li id="recent" class="tablinks.active" onclick="callTab(event, 'list')"><a href="#">최근</a></li>
+          <li id="recent" class="tablinks active" onclick="callTab(event, 'list')"><a href="#">최근</a></li>
           <li id="view" class="tablinks" onclick="callTab(event, 'list')"><a href="#">많이본</a></li>
           <li id="popular" class="tablinks" onclick="callTab(event, 'list')"><a href="#">실시간인기</a></li>
         </ul>
