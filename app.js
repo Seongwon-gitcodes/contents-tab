@@ -10,7 +10,7 @@ let jsonData = recentContents;
 let count = 10;
 let arr = [];
 
-getData(jsonData);
+setLoading();
 
 //탭 호출
 function callTab(event, tabName) {
@@ -35,7 +35,8 @@ function callTab(event, tabName) {
 
     // 호출 데이터 변경
     jsonData = eval(event.currentTarget.getAttribute("id") + "Contents");
-    getData(jsonData);
+    
+    setLoading();
 }
 
 // 데이터 불러오기
@@ -83,4 +84,20 @@ function getData(dataName) {
             break;
         }
     }
+}
+
+// 로딩
+function setLoading() {
+    console.log("----------SETLOADING()----------");
+    const $loadingImg = document.createElement('img');
+    $loadingImg.src = './Loading_icon.gif';
+    $loadingImg.setAttribute("id", "loading-img");
+    const $container = document.getElementById('load-container');
+    $container.appendChild($loadingImg);
+    $listContent.style.display = 'none';
+    setTimeout(function () {
+        $loadingImg.remove();
+        $listContent.style.display = 'block';
+        getData(jsonData);
+    }, 1000);
 }
