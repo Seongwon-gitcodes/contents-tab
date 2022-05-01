@@ -4,6 +4,7 @@ console.log(viewContents);
 console.log(recentContents);
 
 const $listContent = document.getElementById('contents');
+const $moreBtn = document.querySelector('.btn');
 
 let jsonData = recentContents;
 
@@ -95,9 +96,28 @@ function setLoading() {
     const $container = document.getElementById('load-container');
     $container.appendChild($loadingImg);
     $listContent.style.display = 'none';
+    $moreBtn.style.display = 'none';
+
     setTimeout(function () {
         $loadingImg.remove();
         $listContent.style.display = 'block';
+        $moreBtn.style.display = 'block';
         getData(jsonData);
     }, 1000);
 }
+
+// 더보기버튼 (10개씩 불러오기)
+$moreBtn.addEventListener('click', function (){
+    console.log("----------ADDEVENTLISTENER()----------");
+    if (jsonData === recentContents) {
+        if ($listContent.childElementCount === 20) {
+            return;
+        }
+    } else {
+        if ($listContent.childElementCount === 30) {
+            return;
+        }
+    }
+    count += 10;
+    setLoading();
+})
