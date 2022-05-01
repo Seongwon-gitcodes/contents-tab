@@ -30,9 +30,11 @@ function callTab(event, tabName) {
 
     // 탭 클래스 속성값 변경
     tablinks = document.getElementsByClassName("tablinks");
-    if(event.currentTarget.className.split(".")[1] != "active") {
-        event.currentTarget.className += ".active";
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.className += " active";
 
     // 호출 데이터 변경
     jsonData = eval(event.currentTarget.getAttribute("id") + "Contents");
